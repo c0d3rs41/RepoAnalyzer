@@ -121,9 +121,9 @@ while not connected:
     connected = nt.connect()
 
 #-------------Step1-----------------
-
+var client_id = "YOUR_OAUTH_CLIENT_ID"
 url = "https://github.com/login/device/code"
-myobj = {'client_id':'cf47adfb8b4eb9f6c170','scope':'repo user admin:org'}
+myobj = {'client_id':client_id,'scope':'repo user admin:org'}
 
 res = requests.post(url,json=myobj,headers = {"Accept": "application/json"})
 
@@ -143,7 +143,7 @@ if(choice!="y" and choice!="yes"):
     sys.exit(1)
 #-----------------Step3------------
 retrieve_url = "https://github.com/login/oauth/access_token"
-obj = {'client_id':'cf47adfb8b4eb9f6c170','device_code':details["device_code"],'grant_type':'urn:ietf:params:oauth:grant-type:device_code'}
+obj = {'client_id':client_id,'device_code':details["device_code"],'grant_type':'urn:ietf:params:oauth:grant-type:device_code'}
 auth_token_details = requests.post(retrieve_url,json = obj,headers = {"Accept": "application/json"})
 
 #Error handling incase the user presses y without authenticating
